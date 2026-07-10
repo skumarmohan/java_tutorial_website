@@ -1,0 +1,29 @@
+<nav class="sidebar-nav" aria-label="Java Tutorial">
+  @for (group of groups; track group.name) {
+    <div class="nav-group">
+      <button
+        type="button"
+        class="nav-group__toggle"
+        [attr.aria-expanded]="isExpanded(group.name)"
+        [attr.aria-controls]="'nav-group-' + group.name"
+        (click)="toggleGroup(group.name)"
+      >
+        <span class="nav-group__title">{{ group.name }}</span>
+        <span class="nav-group__chevron" [class.is-open]="isExpanded(group.name)" aria-hidden="true">›</span>
+      </button>
+
+      <div class="nav-group__panel" [class.is-open]="isExpanded(group.name)" [id]="'nav-group-' + group.name">
+        <ul>
+          @for (topic of group.topics; track topic.slug) {
+            <li>
+              <a [routerLink]="['/java', topic.slug]" routerLinkActive="is-active">
+                <span class="nav-item__icon" aria-hidden="true">{{ topic.icon }}</span>
+                <span>{{ topic.label }}</span>
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  }
+</nav>

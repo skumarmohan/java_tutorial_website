@@ -1,0 +1,87 @@
+.sidebar-nav {
+  padding: var(--space-3);
+}
+
+.nav-group {
+  margin-bottom: var(--space-1);
+}
+
+.nav-group__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  border-radius: var(--radius-sm);
+
+  &:hover {
+    background: var(--color-surface);
+  }
+}
+
+.nav-group__title {
+  font-size: var(--font-size-small);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.nav-group__chevron {
+  color: var(--color-text-secondary);
+  transition: transform var(--transition-fast);
+
+  &.is-open {
+    transform: rotate(90deg);
+  }
+}
+
+// Pure-CSS collapse/expand: animating grid-template-rows avoids height:auto
+// not being animatable, with no JS height measurement needed.
+.nav-group__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-base);
+
+  &.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  > ul {
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-5);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+  border-left: 3px solid transparent;
+
+  &:hover {
+    background: var(--color-border);
+    text-decoration: none;
+  }
+
+  &.is-active {
+    color: var(--color-primary);
+    border-left-color: var(--color-primary);
+    background: var(--color-surface);
+    font-weight: var(--font-weight-medium);
+  }
+}
+
+.nav-item__icon {
+  font-size: 0.9rem;
+}

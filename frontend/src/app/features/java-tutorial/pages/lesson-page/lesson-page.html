@@ -1,0 +1,162 @@
+@if (lesson(); as lesson) {
+  <article class="lesson">
+    <app-breadcrumb [items]="breadcrumbItems()" />
+
+    <h1>{{ lesson.title }}</h1>
+
+    <section class="lesson__section">
+      <p class="lesson__lead">{{ lesson.introduction }}</p>
+    </section>
+
+    <section class="lesson__section">
+      <h2>Why This Matters</h2>
+      <p>{{ lesson.whyItMatters }}</p>
+    </section>
+
+    <section class="lesson__section">
+      <h2>Detailed Explanation</h2>
+      @for (paragraph of lesson.explanation; track $index) {
+        <p>{{ paragraph }}</p>
+      }
+    </section>
+
+    @if (lesson.analogy) {
+      <section class="lesson__section lesson__analogy">
+        <h2>Real-World Analogy</h2>
+        <p>{{ lesson.analogy }}</p>
+      </section>
+    }
+
+    @if (lesson.syntax; as syntax) {
+      <section class="lesson__section">
+        <h2>Syntax</h2>
+        @if (syntax.description) {
+          <p>{{ syntax.description }}</p>
+        }
+        <app-code-block [code]="syntax.code" [language]="syntax.language ?? 'java'" />
+      </section>
+    }
+
+    @if (lesson.examples.length > 0) {
+      <section class="lesson__section">
+        <h2>Examples</h2>
+        @for (example of lesson.examples; track example.title) {
+          <div class="example">
+            <h3>{{ example.title }}</h3>
+            <app-code-block [code]="example.code" [language]="example.language ?? 'java'" />
+
+            @if (example.output) {
+              <div class="output-block">
+                <span class="output-block__label">Output</span>
+                <pre><code>{{ example.output }}</code></pre>
+              </div>
+            }
+
+            @if (example.explanation) {
+              <p class="example__note">{{ example.explanation }}</p>
+            }
+
+            @if (example.lineByLine && example.lineByLine.length > 0) {
+              <div class="line-by-line">
+                <span class="line-by-line__label">Line-by-Line Explanation</span>
+                <ol>
+                  @for (line of example.lineByLine; track $index) {
+                    <li>{{ line }}</li>
+                  }
+                </ol>
+              </div>
+            }
+          </div>
+        }
+      </section>
+    }
+
+    @if (lesson.diagram; as diagram) {
+      <section class="lesson__section">
+        <h2>Visual Diagram</h2>
+        <app-diagram-box [steps]="diagram.steps" [caption]="diagram.caption" />
+      </section>
+    }
+
+    <section class="lesson__section">
+      <h2>Common Mistakes</h2>
+      <ul class="lesson__list lesson__list--mistakes">
+        @for (mistake of lesson.commonMistakes; track mistake) {
+          <li>{{ mistake }}</li>
+        }
+      </ul>
+    </section>
+
+    <section class="lesson__section">
+      <h2>Tips</h2>
+      <ul class="lesson__list lesson__list--tips">
+        @for (tip of lesson.tips; track tip) {
+          <li>{{ tip }}</li>
+        }
+      </ul>
+    </section>
+
+    @if (lesson.bestPractices && lesson.bestPractices.length > 0) {
+      <section class="lesson__section">
+        <h2>Best Practices</h2>
+        <ul class="lesson__list lesson__list--best-practices">
+          @for (practice of lesson.bestPractices; track practice) {
+            <li>{{ practice }}</li>
+          }
+        </ul>
+      </section>
+    }
+
+    @if (lesson.performanceNotes) {
+      <section class="lesson__section">
+        <h2>Performance Notes</h2>
+        <p>{{ lesson.performanceNotes }}</p>
+      </section>
+    }
+
+    @if (lesson.interviewQuestions && lesson.interviewQuestions.length > 0) {
+      <section class="lesson__section">
+        <h2>Interview Questions</h2>
+        <div class="qa-list">
+          @for (qa of lesson.interviewQuestions; track qa.question) {
+            <details class="qa-item">
+              <summary>{{ qa.question }}</summary>
+              <p>{{ qa.answer }}</p>
+            </details>
+          }
+        </div>
+      </section>
+    }
+
+    @if (lesson.practiceExercises && lesson.practiceExercises.length > 0) {
+      <section class="lesson__section">
+        <h2>Practice Exercises</h2>
+        <ul class="exercise-list">
+          @for (exercise of lesson.practiceExercises; track exercise.prompt) {
+            <li>
+              <span class="exercise-list__difficulty" [class]="'is-' + exercise.difficulty.toLowerCase()">{{ exercise.difficulty }}</span>
+              <span>{{ exercise.prompt }}</span>
+            </li>
+          }
+        </ul>
+      </section>
+    }
+
+    <section class="lesson__section lesson__summary">
+      <h2>Summary</h2>
+      <p>{{ lesson.summary }}</p>
+    </section>
+
+    <app-lesson-nav-buttons [slug]="lesson.slug" />
+  </article>
+} @else {
+  <article class="lesson lesson--coming-soon">
+    <app-breadcrumb [items]="breadcrumbItems()" />
+    <h1>Coming Soon</h1>
+    <p>
+      This lesson hasn't been written yet — tutorials are being added one topic at a time.
+      In the meantime, start with the introduction or pick another topic from the sidebar.
+    </p>
+    <a class="btn btn--primary" routerLink="/java/introduction">Go to Introduction →</a>
+  </article>
+}

@@ -1,0 +1,30 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <button
+      type="button"
+      class="hamburger"
+      aria-label="Toggle navigation menu"
+      (click)="menuToggle.emit()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <a routerLink="/" class="brand" aria-label="JavaLearn home">
+      <span class="brand__mark" aria-hidden="true">&lt;/&gt;</span>
+      <span class="brand__name">JavaLearn</span>
+    </a>
+
+    <div class="search">
+      <app-search-box size="sm" />
+    </div>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/java" routerLinkActive="is-active">Java Tutorial</a>
+    </nav>
+
+    <app-theme-toggle />
+  </div>
+</header>

@@ -1,0 +1,23 @@
+<nav class="lesson-nav" aria-label="Lesson navigation">
+  @if (previous(); as prev) {
+    <a class="lesson-nav__link lesson-nav__link--prev" [routerLink]="['/java', prev.slug]">
+      <span class="lesson-nav__arrow" aria-hidden="true">←</span>
+      <span>
+        <span class="lesson-nav__eyebrow">Previous</span>
+        <span class="lesson-nav__title">{{ prev.label }}</span>
+      </span>
+    </a>
+  } @else {
+    <span></span>
+  }
+
+  @if (next(); as nxt) {
+    <a class="lesson-nav__link lesson-nav__link--next" [routerLink]="['/java', nxt.slug]">
+      <span>
+        <span class="lesson-nav__eyebrow">Next</span>
+        <span class="lesson-nav__title">{{ nxt.label }}</span>
+      </span>
+      <span class="lesson-nav__arrow" aria-hidden="true">→</span>
+    </a>
+  }
+</nav>

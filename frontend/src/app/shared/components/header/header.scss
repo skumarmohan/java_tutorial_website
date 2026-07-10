@@ -1,0 +1,106 @@
+@use 'mixins' as *;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  height: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+
+  span {
+    display: block;
+    height: 2px;
+    background: var(--color-text-primary);
+    border-radius: 1px;
+  }
+
+  @include lg {
+    display: none;
+  }
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.15rem;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: none;
+    color: var(--color-text-primary);
+  }
+}
+
+.brand__mark {
+  color: var(--color-primary);
+  font-family: var(--font-family-mono);
+}
+
+.search {
+  flex: 1;
+  max-width: 360px;
+  display: none;
+
+  @include md {
+    display: block;
+  }
+}
+
+.primary-nav {
+  display: none;
+  gap: var(--space-5);
+
+  a {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-small);
+
+    &:hover {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    &.is-active {
+      color: var(--color-primary);
+    }
+  }
+
+  @include lg {
+    display: flex;
+  }
+}
+
+app-theme-toggle {
+  margin-left: auto;
+
+  @include md {
+    margin-left: var(--space-2);
+  }
+}

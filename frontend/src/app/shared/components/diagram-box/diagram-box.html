@@ -1,0 +1,20 @@
+<figure class="diagram-box">
+  <div class="diagram-box__flow">
+    @for (step of steps(); track step.label; let last = $last) {
+      <div class="diagram-box__step">
+        <span class="diagram-box__icon" aria-hidden="true">{{ step.icon }}</span>
+        <span class="diagram-box__label">{{ step.label }}</span>
+        @if (step.description) {
+          <span class="diagram-box__desc">{{ step.description }}</span>
+        }
+      </div>
+      @if (!last) {
+        <span class="diagram-box__arrow" aria-hidden="true">→</span>
+      }
+    }
+  </div>
+
+  @if (caption()) {
+    <figcaption>{{ caption() }}</figcaption>
+  }
+</figure>

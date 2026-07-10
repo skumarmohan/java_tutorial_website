@@ -1,0 +1,47 @@
+@use 'mixins' as *;
+
+.hero {
+  padding: var(--space-8) var(--space-4) var(--space-10);
+  background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
+  text-align: center;
+
+  @include lg {
+    padding: var(--space-10) var(--space-4) var(--space-10);
+  }
+}
+
+.hero__inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero__eyebrow {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-small);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+
+.hero__title {
+  margin-bottom: var(--space-4);
+}
+
+.hero__subtitle {
+  color: var(--color-text-secondary);
+  max-width: 56ch;
+  margin: 0 auto var(--space-6);
+}
+
+.hero__search {
+  max-width: 520px;
+  margin: 0 auto var(--space-6);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+}

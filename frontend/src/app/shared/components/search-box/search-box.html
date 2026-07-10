@@ -1,0 +1,33 @@
+<div class="search-box" [class.search-box--lg]="size() === 'lg'">
+  <form class="search-box__form" (ngSubmit)="onSubmit()" role="search">
+    <span class="search-box__icon" aria-hidden="true">🔍</span>
+    <input
+      type="search"
+      class="search-box__input"
+      [placeholder]="placeholder()"
+      [value]="query()"
+      (input)="onInput($any($event.target).value)"
+      (focus)="onInput(query())"
+      aria-label="Search Java tutorials"
+      autocomplete="off"
+    />
+  </form>
+
+  @if (isOpen() && results().length > 0) {
+    <ul class="search-box__results">
+      @for (topic of results(); track topic.slug) {
+        <li>
+          <button type="button" (click)="select(topic)">
+            <span class="result__icon" aria-hidden="true">{{ topic.icon }}</span>
+            <span class="result__text">
+              <span class="result__title">{{ topic.label }}</span>
+              <span class="result__desc">{{ topic.description }}</span>
+            </span>
+          </button>
+        </li>
+      }
+    </ul>
+  } @else if (isOpen() && query().trim().length > 0) {
+    <div class="search-box__empty">No tutorials found for "{{ query() }}"</div>
+  }
+</div>

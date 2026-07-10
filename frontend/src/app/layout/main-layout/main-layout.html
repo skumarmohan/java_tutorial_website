@@ -1,0 +1,19 @@
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<app-header (menuToggle)="toggleSidebar()" />
+
+<div class="shell">
+  <aside class="shell__sidebar" [class.is-open]="sidebarOpen()" aria-label="Java Tutorial navigation">
+    <app-sidebar-nav />
+  </aside>
+
+  @if (sidebarOpen()) {
+    <div class="shell__backdrop" (click)="closeSidebar()" aria-hidden="true"></div>
+  }
+
+  <main id="main-content" class="shell__content">
+    <router-outlet />
+  </main>
+</div>
+
+<app-footer />

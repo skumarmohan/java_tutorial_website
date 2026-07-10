@@ -1,0 +1,20 @@
+<section class="section">
+  <div class="section__header">
+    <p class="section__eyebrow">Java Roadmap</p>
+    <h2>Your Learning Path</h2>
+    <p class="section__subtitle">Follow the stages in order — each one builds on the last.</p>
+  </div>
+
+  <ol class="roadmap">
+    @for (stage of stages; track stage.group; let i = $index) {
+      <li class="roadmap__stage">
+        <a class="roadmap__node" [routerLink]="['/java', stage.firstSlug]">
+          <span class="roadmap__index">{{ i + 1 }}</span>
+          <span class="roadmap__icon" aria-hidden="true">{{ stage.icon }}</span>
+          <span class="roadmap__label">{{ stage.group }}</span>
+          <span class="roadmap__count">{{ stage.topicCount }} lessons</span>
+        </a>
+      </li>
+    }
+  </ol>
+</section>

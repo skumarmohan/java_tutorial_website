@@ -1,0 +1,15 @@
+<section class="section">
+  <div class="section__header">
+    <p class="section__eyebrow">FAQ</p>
+    <h2>Frequently Asked Questions</h2>
+  </div>
+
+  <div class="faq-list">
+    @for (item of faqs; track item.question) {
+      <details class="faq-item">
+        <summary>{{ item.question }}</summary>
+        <p>{{ item.answer }}</p>
+      </details>
+    }
+  </div>
+</section>

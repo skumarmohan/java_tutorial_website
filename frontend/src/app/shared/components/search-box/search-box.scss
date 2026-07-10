@@ -1,0 +1,118 @@
+@use 'mixins' as *;
+
+.search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-box__form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-box__icon {
+  position: absolute;
+  left: var(--space-3);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.search-box__input {
+  width: 100%;
+  height: 38px;
+  padding: 0 var(--space-3) 0 var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.search-box--lg {
+  .search-box__input {
+    height: 56px;
+    font-size: var(--font-size-body);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .search-box__icon {
+    left: var(--space-4);
+    font-size: 1.1rem;
+  }
+}
+
+.search-box__results,
+.search-box__empty {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  right: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 110;
+  overflow: hidden;
+}
+
+.search-box__results {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-2) 0;
+  max-height: 320px;
+  overflow-y: auto;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: var(--space-2) var(--space-4);
+    text-align: left;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      background: var(--color-surface);
+    }
+  }
+}
+
+.result__icon {
+  font-size: 1.1rem;
+}
+
+.result__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.result__title {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+}
+
+.result__desc {
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+}
+
+.search-box__empty {
+  padding: var(--space-4);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+  text-align: center;
+}

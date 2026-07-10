@@ -1,0 +1,21 @@
+<section class="section section--muted">
+  <div class="section__header">
+    <p class="section__eyebrow">Testimonials</p>
+    <h2>What Students Say</h2>
+  </div>
+
+  <div class="testimonials">
+    @for (t of testimonials; track t.name) {
+      <figure class="testimonial-card">
+        <blockquote>&ldquo;{{ t.quote }}&rdquo;</blockquote>
+        <figcaption>
+          <span class="testimonial-card__avatar" aria-hidden="true">{{ t.avatar }}</span>
+          <span>
+            <span class="testimonial-card__name">{{ t.name }}</span>
+            <span class="testimonial-card__role">{{ t.role }}</span>
+          </span>
+        </figcaption>
+      </figure>
+    }
+  </div>
+</section>

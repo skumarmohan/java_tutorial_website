@@ -1,0 +1,17 @@
+<section class="section">
+  <div class="section__header">
+    <p class="section__eyebrow">Why Java</p>
+    <h2>Why Learn Java</h2>
+    <p class="section__subtitle">Still one of the most in-demand, versatile languages to have on a resume.</p>
+  </div>
+
+  <div class="reasons">
+    @for (reason of reasons; track reason.title) {
+      <div class="reason-card">
+        <span class="reason-card__icon" aria-hidden="true">{{ reason.icon }}</span>
+        <h3>{{ reason.title }}</h3>
+        <p>{{ reason.description }}</p>
+      </div>
+    }
+  </div>
+</section>

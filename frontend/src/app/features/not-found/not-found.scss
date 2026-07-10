@@ -1,0 +1,10 @@
+.not-found {
+  max-width: 480px;
+  margin: var(--space-10) auto;
+  text-align: center;
+
+  p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-5);
+  }
+}

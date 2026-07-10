@@ -1,0 +1,34 @@
+// Design tokens: color, spacing, radius, shadow.
+// Colors are emitted as CSS custom properties so theme switching (light/dark)
+// is a variable swap in _themes.scss, not a duplicated stylesheet.
+
+:root {
+  // Spacing scale
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+
+  // Radius
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  // Shadows (soft, low-opacity — used sparingly on cards only)
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+
+  // Layout
+  --header-height: 64px;
+  --sidebar-width: 280px;
+  --content-max-width: 1280px;
+
+  // Transitions
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}

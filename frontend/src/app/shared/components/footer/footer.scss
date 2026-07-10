@@ -1,0 +1,74 @@
+@use 'mixins' as *;
+
+.site-footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-10);
+}
+
+.site-footer__inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+  display: grid;
+  gap: var(--space-6);
+
+  @include md {
+    grid-template-columns: 1.5fr 2fr;
+  }
+}
+
+.site-footer__brand {
+  span:first-child {
+    font-family: var(--font-family-mono);
+    color: var(--color-primary);
+    margin-right: var(--space-2);
+  }
+
+  p {
+    margin-top: var(--space-3);
+    color: var(--color-text-secondary);
+    max-width: 32ch;
+  }
+}
+
+.site-footer__links {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(2, 1fr);
+
+  @include sm {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.link-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+
+  h3 {
+    font-size: var(--font-size-small);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-1);
+  }
+
+  a {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-small);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.site-footer__bottom {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
